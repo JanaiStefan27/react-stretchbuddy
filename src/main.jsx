@@ -7,6 +7,10 @@ import Services from "./pages/services";
 import Signup from "./pages/signup";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
+import Tenis from "./pages/tenis";
+import Basketball from "./pages/basketball";
+import Handball from "./pages/handball";
+
 import "./index.css";
 
 createRoot(document.getElementById("root")).render(
@@ -18,6 +22,9 @@ createRoot(document.getElementById("root")).render(
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/tenis" element={<Tenis />} />
+        <Route path="/basketball" element={<Basketball />} />
+        <Route path="/handball" element={<Handball />} />
       </Routes>
       <Footer />
     </BrowserRouter>
