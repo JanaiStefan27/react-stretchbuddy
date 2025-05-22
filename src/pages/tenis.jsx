@@ -1,10 +1,39 @@
 import React from "react";
+import ExerciseCard from "../components/exercisecard";
 
 const Tenis = () => {
+  const exercises = [
+    {
+      title: "Încălzire Generală",
+      videoSrc: "/video/warmup1.mp4",
+      description: "Exerciții ușoare pentru activarea întregului corp.",
+    },
+    {
+      title: "Încălzire Generală",
+      videoSrc: "/video/warmup1.mp4",
+      description: "Exerciții ușoare pentru activarea întregului corp.",
+    },
+    {
+      title: "Încălzire Generală",
+      videoSrc: "/video/warmup1.mp4",
+      description: "Exerciții ușoare pentru activarea întregului corp.",
+    },
+  ];
+
   return (
-    <div>
-      <h2>Tennis Warm-up Guide</h2>
-      <p>Here are some exercises and tips to warm up for tennis...</p>
+    <div className="container py-5">
+      <h2 className="text-center mb-4">Exerciții pentru Tenis</h2>
+      <div className="row g-4">
+        {exercises.map((exercise, index) => (
+          <div className="col-md-4" key={index}>
+            <ExerciseCard
+              title={exercise.title}
+              videoSrc={exercise.videoSrc}
+              description={exercise.description}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
