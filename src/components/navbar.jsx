@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { auth } from "../firebase";
+import { auth } from "../firebase/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-
+import { useContext } from "react";
+import { useTheme } from "../context/themecontext";
 const Navbar = () => {
   const [user, setUser] = useState(null);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -53,6 +55,14 @@ const Navbar = () => {
           </ul>
 
           <div className="d-flex align-items-center gap-3">
+            <button
+              onClick={toggleTheme}
+              className="btn btn-outline-light"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? "Light" : "Dark"}
+            </button>
+
             {!user ? (
               <>
                 <Link to="/login" className="btn btn-outline-light">

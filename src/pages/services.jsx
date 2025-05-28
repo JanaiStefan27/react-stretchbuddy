@@ -1,25 +1,20 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import "../index.css";
 
 const Services = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="container py-5">
-      <h2 className="text-center mb-4">Warm Up Services</h2>
-      <div className="row g-4">
+      <h2 className="text-center mb-5">
+        Alege sportul pentru care vrei să te încălzești
+      </h2>
+      <div className="row">
         {/* Football */}
-        <div className="col-md-4">
-          <div
-            className="card h-100 shadow"
-            role="button"
-            onClick={() => navigate("/football")}
-          >
+        <div className="col-md-4 mb-4">
+          <div className="card h-100">
             <img
               src="/images/football.jpg"
               alt="Football"
-              className="card-img-top object-fit-cover"
-              style={{ height: "300px", objectPosition: "center" }}
+              className="sport-card-img"
             />
             <div className="card-body">
               <h5 className="card-title">Football</h5>
@@ -27,52 +22,51 @@ const Services = () => {
                 Încălzire dinamică, mișcări laterale și exerciții cu mingea
                 pentru performanță maximă.
               </p>
+              <a href="/football" className="btn btn-primary">
+                Vezi exercițiile
+              </a>
             </div>
           </div>
         </div>
 
         {/* Basketball */}
-        <div className="col-md-4">
-          <div
-            className="card h-100 shadow"
-            role="button"
-            onClick={() => navigate("/basketball")}
-          >
+        <div className="col-md-4 mb-4">
+          <div className="card h-100">
             <img
               src="/images/basketball.jpg"
               alt="Basketball"
-              className="card-img-top object-fit-cover"
-              style={{ height: "300px", objectPosition: "center" }}
+              className="sport-card-img"
             />
             <div className="card-body">
               <h5 className="card-title">Basketball</h5>
               <p className="card-text">
-                Încălziri pentru agilitate, sărituri și viteză specifice jocului
-                de baschet.
+                Sărituri, alergări scurte și întinderi pentru viteză și
+                flexibilitate în teren.
               </p>
+              <a href="/basketball" className="btn btn-primary">
+                Vezi exercițiile
+              </a>
             </div>
           </div>
         </div>
 
         {/* Tenis */}
-        <div className="col-md-4">
-          <div
-            className="card h-100 shadow"
-            role="button"
-            onClick={() => navigate("/tenis")}
-          >
+        <div className="col-md-4 mb-4">
+          <div className="card h-100">
             <img
               src="/images/tenis.jpg"
               alt="Tenis"
-              className="card-img-top object-fit-cover"
-              style={{ height: "300px", objectPosition: "center" }}
+              className="sport-card-img"
             />
             <div className="card-body">
-              <h5 className="card-title">Tenis</h5>
+              <h5 className="card-title">Tennis</h5>
               <p className="card-text">
-                Încălziri pentru coordonare, reflexe și mobilitate pentru
-                terenul de tenis.
+                Exerciții de mobilitate pentru încheieturi, balans lateral și
+                activare musculară.
               </p>
+              <a href="/tenis" className="btn btn-primary">
+                Vezi exercițiile
+              </a>
             </div>
           </div>
         </div>

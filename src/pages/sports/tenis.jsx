@@ -1,7 +1,7 @@
 import React from "react";
-import ExerciseCard from "../components/exercisecard";
+import ExerciseCard from "../../components/exercisecard";
 
-const Basketball = () => {
+const Tenis = () => {
   const exercises = [
     {
       title: "Încălzire Generală",
@@ -22,7 +22,7 @@ const Basketball = () => {
 
   return (
     <div className="container py-5">
-      <h2 className="text-center mb-4">Exerciții pentru Baschet</h2>
+      <h2 className="text-center mb-4">Exerciții pentru Tenis</h2>
       <div className="row g-4">
         {exercises.map((exercise, index) => (
           <div className="col-md-4" key={index}>
@@ -38,4 +38,4 @@ const Basketball = () => {
   );
 };
 
-export default Basketball;
+export default Tenis;

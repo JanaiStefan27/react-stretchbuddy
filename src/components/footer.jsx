@@ -15,18 +15,8 @@ const Footer = () => {
           </a>
         </li>
         <li className="nav-item">
-          <a href="/pricing" className="nav-link px-2 text-white">
-            Pricing
-          </a>
-        </li>
-        <li className="nav-item">
           <a href="/faqs" className="nav-link px-2 text-white">
             FAQs
-          </a>
-        </li>
-        <li className="nav-item">
-          <a href="/about" className="nav-link px-2 text-white">
-            About
           </a>
         </li>
       </ul>
