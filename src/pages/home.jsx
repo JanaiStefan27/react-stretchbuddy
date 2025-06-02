@@ -2,69 +2,103 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div className="container py-5">
-      <h2 className="text-center mb-5">
-        StretchBuddy – Ghidul tau de Incalzire
-      </h2>
-
-      {/* Prima imagine: imagine dreapta, text stânga */}
-      <div className="row align-items-center mb-5">
-        <div className="col-md-6">
-          <h3>Stretch it out</h3>
-          <p>
-            Această secvență este ideală pentru o rutină completă de întindere
-            la sol. Include poziții simple precum „hero pose”, „child's pose” și
-            „bridge” care activează ușor corpul după perioade de repaus sau
-            înainte de sport. Menține fiecare poziție timp de 20 de secunde
-            pentru eficiență maximă.
-          </p>
-        </div>
-        <div className="col-md-6 text-center">
-          <img
-            src="/images/stretch-it-out.jpg"
-            alt="Stretch it out"
-            className="img-fluid rounded shadow"
-          />
-        </div>
-      </div>
-
-      {/* A doua imagine: imagine stânga, text dreapta */}
-      <div className="row align-items-center mb-5 flex-md-row-reverse">
-        <div className="col-md-6">
-          <h3>Exerciții pentru gât și umeri</h3>
-          <p>
-            Ideal pentru încălzire generală înainte de antrenamente, acest set
-            de exerciții ajută la mobilizarea gâtului și a umerilor. Poate fi
-            folosit și ca parte a unei rutine de relaxare după birou. Include
-            rotiri ale gâtului, înclinări laterale și întinderi de spate.
-          </p>
-        </div>
-        <div className="col-md-6 text-center">
-          <img
-            src="/images/stretch-neck.jpg"
-            alt="Stretch neck"
-            className="img-fluid rounded shadow"
-          />
-        </div>
-      </div>
-
-      {/* A treia imagine: imagine centrată, text dedesubt */}
-      <div className="text-center mb-4">
+    <div className="home-page">
+      {/* Hero Section cu imagine full-page și text peste */}
+      <div
+        className="position-relative"
+        style={{ height: "100vh", width: "100vw", overflow: "hidden" }}
+      >
         <img
-          src="/images/stretching-exercises.jpg"
-          alt="Stretching chart"
-          className="img-fluid rounded shadow"
-          style={{ maxWidth: "800px" }}
+          src="/images/stretching.jpg"
+          alt="StretchBuddy"
+          className="position-absolute top-0 start-0 w-100 h-100"
+          style={{ objectFit: "cover" }}
         />
+
+        <div
+          className="position-absolute top-50 start-50 translate-middle text-center text-white px-3"
+          style={{ textShadow: "0 0 10px rgba(0,0,0,0.7)" }}
+        >
+          <h1 className="display-3 fw-bold">StretchBuddy</h1>
+          <h3 className="mb-3">Încălzește-te. Protejează-ți corpul.</h3>
+          <p className="lead mx-auto" style={{ maxWidth: "600px" }}>
+            Exerciții de stretching adaptate pentru fiecare sportiv, indiferent
+            de nivel.
+          </p>
+          <a href="/services" className="btn btn-primary btn-lg mt-3">
+            Vezi exercițiile
+          </a>
+        </div>
       </div>
-      <div className="text-center px-md-5">
-        <h3>Plan general de întindere pentru întregul corp</h3>
-        <p>
-          Această diagramă oferă o privire de ansamblu asupra întinderilor
-          esențiale pentru toate grupele musculare. Parcurgerea acestor
-          exerciții zilnic sau înainte de orice sport ajută la prevenirea
-          accidentărilor și îmbunătățirea flexibilității.
+
+      {/* Motivational Text Section */}
+      <div className="text-center my-5 px-3">
+        <h2 className="mb-3">De ce este importantă încălzirea?</h2>
+        <p className="lead" style={{ maxWidth: "700px", margin: "0 auto" }}>
+          Încălzirea corectă înainte de efort reduce semnificativ riscul de
+          accidentări, îmbunătățește performanța și te pregătește mental pentru
+          antrenament. Alege să îți protejezi corpul cu rutine simple, dar
+          eficiente.
         </p>
+      </div>
+
+      {/* Static Sport Card Section */}
+      <div className="container pb-5">
+        <div className="row g-4">
+          <div className="col-md-4">
+            <div className="card h-100 border-0 shadow">
+              <img
+                src="/images/tenis.jpg"
+                alt="Tenis"
+                className="card-img-top"
+                style={{ height: "300px", objectFit: "cover" }}
+              />
+              <div className="card-body text-center">
+                <h5 className="card-title">Pregătirea pentru Tenis</h5>
+                <p className="card-text">
+                  Exerciții de mobilitate pentru articulații și activare
+                  musculară specifică tenisului.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <div className="card h-100 border-0 shadow">
+              <img
+                src="/images/basketball.jpg"
+                alt="Basketball"
+                className="card-img-top"
+                style={{ height: "300px", objectFit: "cover" }}
+              />
+              <div className="card-body text-center">
+                <h5 className="card-title">Încălzire pentru Baschet</h5>
+                <p className="card-text">
+                  Stretching dinamic, mobilitate și activare pentru sărituri și
+                  mișcări rapide.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <div className="card h-100 border-0 shadow">
+              <img
+                src="/images/football.jpg"
+                alt="Fotbal"
+                className="card-img-top"
+                style={{ height: "300px", objectFit: "cover" }}
+              />
+              <div className="card-body text-center">
+                <h5 className="card-title">Înainte de Fotbal</h5>
+                <p className="card-text">
+                  Activare cardio ușoară, exerciții pentru picioare și
+                  mobilitate înainte de joc.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

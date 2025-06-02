@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import styles from "./signup.module.css";
 import { auth } from "../firebase/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState(null);
   const navigate = useNavigate();
 
-  const handleSignup = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      setMessage("Cont creat cu succes! Vei fi redirecționat...");
+      await signInWithEmailAndPassword(auth, email, password);
+      setMessage("Autentificare reușită! Vei fi redirecționat...");
       setTimeout(() => navigate("/"), 2000);
     } catch (error) {
       setMessage("Eroare: " + error.message);
@@ -23,8 +23,8 @@ const Signup = () => {
 
   return (
     <div className={styles.signup}>
-      <h2>Crează un cont nou</h2>
-      <form onSubmit={handleSignup}>
+      <h2>Autentificare</h2>
+      <form onSubmit={handleLogin}>
         <input
           type="email"
           placeholder="Email"
@@ -39,11 +39,11 @@ const Signup = () => {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Înregistrare</button>
+        <button type="submit">Login</button>
         {message && <p className={styles.message}>{message}</p>}
       </form>
     </div>
   );
 };
 
-export default Signup;
+export default Login;
