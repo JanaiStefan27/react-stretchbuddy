@@ -1,9 +1,12 @@
 import React from "react";
 import "../index.css";
+import { useTheme } from "../context/themecontext";
 
 const Services = () => {
+  const { theme } = useTheme();
+
   return (
-    <div className="container py-5">
+    <div className={`container py-5 ${theme}`}>
       <h2 className="text-center mb-5">
         Alege sportul pentru care vrei să te încălzești
       </h2>

@@ -3,8 +3,10 @@ import styles from "./signup.module.css";
 import { auth } from "../firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../context/themecontext";
 
 const Login = () => {
+  const { theme } = useTheme();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState(null);
@@ -14,7 +16,7 @@ const Login = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      setMessage("Autentificare reușită! Vei fi redirecționat...");
+      setMessage("Autentificare reușită! Vei fi redirecționat.");
       setTimeout(() => navigate("/"), 2000);
     } catch (error) {
       setMessage("Eroare: " + error.message);
@@ -22,7 +24,7 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.signup}>
+    <div className={`${styles.signup} ${theme}`}>
       <h2>Autentificare</h2>
       <form onSubmit={handleLogin}>
         <input

@@ -1,8 +1,11 @@
 import React from "react";
+import { useTheme } from "../context/themecontext";
 
 const Home = () => {
+  const { theme } = useTheme();
+
   return (
-    <div className="home-page">
+    <div className={`home-page ${theme}`}>
       {/* Hero Section cu imagine full-page și text peste */}
       <div
         className="position-relative"

@@ -1,17 +1,30 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
+// 1. Creăm contextul
 const ThemeContext = createContext();
 
-export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
-  });
+// 2. Hook pentru a folosi tema în componente
+export const useTheme = () => useContext(ThemeContext);
 
+// 3. Provider global
+export const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState("light");
+
+  // La montare: citește din localStorage
   useEffect(() => {
-    document.body.className = theme; // Aplică tema ca clasă pe body
+    const saved = localStorage.getItem("theme");
+    if (saved) {
+      setTheme(saved);
+    }
+  }, []);
+
+  // Aplică tema pe <html> și salvează în localStorage
+  useEffect(() => {
+    document.documentElement.className = theme;
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  // Funcție pentru toggle
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
@@ -22,5 +35,3 @@ export const ThemeProvider = ({ children }) => {
     </ThemeContext.Provider>
   );
 };
-
-export const useTheme = () => useContext(ThemeContext);

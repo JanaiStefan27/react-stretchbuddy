@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { useContext } from "react";
 import { useTheme } from "../context/themecontext";
+
 const Navbar = () => {
   const [user, setUser] = useState(null);
   const { theme, toggleTheme } = useTheme();
@@ -22,7 +22,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-dark navbar-dark shadow-sm px-4">
+    <nav
+      className={`navbar navbar-expand-lg shadow-sm px-4 ${
+        theme === "dark" ? "bg-dark navbar-dark" : "bg-light navbar-light"
+      }`}
+    >
       <div className="container-fluid">
         <Link className="navbar-brand fw-bold fs-3" to="/">
           StretchBuddy
@@ -57,24 +61,26 @@ const Navbar = () => {
           <div className="d-flex align-items-center gap-3">
             <button
               onClick={toggleTheme}
-              className="btn btn-outline-light"
+              className={`btn ${
+                theme === "dark" ? "btn-outline-light" : "btn-outline-dark"
+              }`}
               aria-label="Toggle theme"
             >
-              {theme === "dark" ? "Light" : "Dark"}
+              {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
             </button>
 
             {!user ? (
               <>
-                <Link to="/login" className="btn btn-outline-light">
+                <Link to="/login" className="btn btn-outline-primary">
                   Login
                 </Link>
-                <Link to="/signup" className="btn btn-light">
+                <Link to="/signup" className="btn btn-primary">
                   Signup
                 </Link>
               </>
             ) : (
               <>
-                <span className="text-white">Salut, {user.email}</span>
+                <span className="text-secondary">Salut, {user.email}</span>
                 <button onClick={handleLogout} className="btn btn-danger">
                   Logout
                 </button>

@@ -40,3 +40,8 @@
   text-align: center;
   color: #dc3545;
 }
+
+.dark .signup {
+  background: #ffffff;
+  color: #000;
+}
