@@ -77,11 +77,6 @@ body, h1, h2, h3, p, .card, .navbar, .footer {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
 }
 
-html, body, #root {
-  height: 100%;
-  margin: 0;
-}
-
 html.dark body {
   background-color: #121212;
   color: #ffffff;

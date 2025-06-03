@@ -80,7 +80,14 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <span className="text-secondary">Salut, {user.email}</span>
+                <span
+                  className={`fw-semibold ${
+                    theme === "dark" ? "text-light" : "text-dark"
+                  }`}
+                >
+                  Salut, {user.email}
+                </span>
+
                 <button onClick={handleLogout} className="btn btn-danger">
                   Logout
                 </button>
