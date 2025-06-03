@@ -25,7 +25,10 @@ const Signup = () => {
 
   return (
     <div className={`${styles.signup} ${theme}`}>
-      <h2>Crează un cont nou</h2>
+      <h2>
+        <span style={{ color: "#000" }}>Crează un cont nou</span>
+      </h2>
+
       <form onSubmit={handleSignup}>
         <input
           type="email"

@@ -1,23 +1,48 @@
 import React from "react";
+import "../index.css";
 
-const ExerciseCard = ({ title, videoSrc, description }) => {
+const ExerciseCard = ({ title, description, image, link }) => {
   return (
     <div
-      className="card h-100 shadow exercise-card"
-      style={{ transition: "transform 0.2s" }}
+      className="card exercise-card border-0 shadow-sm"
+      style={{
+        width: "100%",
+        height: "1000px",
+        borderRadius: "24px",
+        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+        cursor: "pointer",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+      }}
     >
-      <video
-        controls
+      {/* Imagine mărită */}
+      <img
+        src={image}
+        alt={title}
         className="card-img-top"
-        style={{ height: "250px", objectFit: "cover" }}
+        style={{
+          height: "650px",
+          objectFit: "cover",
+          borderTopLeftRadius: "24px",
+          borderTopRightRadius: "24px",
+        }}
+      />
+
+      {/* Text + buton – spațiere ajustată */}
+      <div
+        className="card-body text-center d-flex flex-column justify-content-start"
+        style={{ padding: "2.5rem", flexGrow: 1 }}
       >
-        <source src={videoSrc} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <div className="card-body d-flex flex-column">
-        <h5 className="card-title">{title}</h5>
-        <p className="card-text flex-grow-1">{description}</p>
-        <button className="btn btn-primary mt-3 w-100">Vezi mai mult</button>
+        <h5 className="card-title fs-2 mb-3">{title}</h5>
+        <p className="card-text fs-5 mb-4">{description}</p>
+
+        {/* Buton cu margin-top auto pt. împins jos (doar dacă e spațiu) */}
+        <div className="mt-auto">
+          <a href={link} className="btn btn-primary btn-lg">
+            Vezi exercițiile
+          </a>
+        </div>
       </div>
     </div>
   );

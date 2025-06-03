@@ -1,13 +1,18 @@
 import React from "react";
 import "./footer.css";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
+import { useTheme } from "../context/themecontext";
 
 const Footer = () => {
+  const { theme } = useTheme();
+
   return (
-    <footer className="footer-custom text-light py-4 border-top mt-auto">
+    <footer
+      className={`footer-custom text-light py-4 border-top mt-auto ${theme}`}
+    >
       <div className="container">
         <div className="row text-center text-md-start">
-          {/* Coloana 1: Brand */}
+          {/* Brand */}
           <div className="col-md-4 mb-4">
             <h5 className="footer-brand">StretchBuddy</h5>
             <p className="footer-description">
@@ -16,7 +21,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Coloana 2: Navigație */}
+          {/* Navigație */}
           <div className="col-md-4 mb-4">
             <h6 className="footer-title">Navigație</h6>
             <ul className="footer-list">
@@ -36,7 +41,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Coloana 3: Social */}
+          {/* Social */}
           <div className="col-md-4 mb-4">
             <h6 className="footer-title">Social</h6>
             <ul className="footer-list social-icons">

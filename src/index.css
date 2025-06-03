@@ -1,107 +1,119 @@
-
-html, body, #root {
-  height: 100%;
+/* Reset de bază */
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
-}
-
-html.light {
-  background-color: #f8f9fa;
-  color: #212529;
-}
-
-html.dark {
-  background-color: #121212;
-  color: #ffffff;
-}
-
-.card-title,
-.card-text,
-.lead,
-.navbar,
-.footer,
-h1, h2, h3, h4, p, span, a {
-  color: #212529;
-}
-
-
-
-body, h1, h2, h3, p, .card, .navbar, .footer {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.card {
-  background-color: #ffffff;
-  color: #000;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.card-body {
-  padding: 2rem;
-}
-
-.card-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-
-
-.sport-card-img {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  object-position: center;
-  border-top-left-radius: 0.75rem;
-  border-top-right-radius: 0.75rem;
-  transition: transform 0.3s ease;
-}
-
-.exercise-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
-}
-
-html.dark body {
-  background-color: #121212;
-  color: #ffffff;
-}
-
+/* Light Theme (implicit) */
 html.light body {
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   color: #212529;
 }
 
-
-html.dark h1,
-html.dark h2,
-html.dark h3,
-html.dark h4,
-html.dark h5,
-html.dark h6,
-html.dark p,
-html.dark span,
-html.dark a,
-html.dark label,
-html.dark .lead,
-html.dark .card-title,
-html.dark .card-text,
-html.dark input,
-html.dark button {
-  color: #ffffff !important;
+html.light a {
+  color: #0d6efd;
 }
+
+html.light .card {
+  background-color: #ffffff;
+  color: #212529;
+}
+
+html.light .btn {
+  color: #fff;
+}
+
+/* Dark Theme */
+html.dark body {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+html.dark a {
+  color: #66b2ff;
+}
+
+html.dark .card {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+html.dark .card-body {
+  background-color: #1e1e1e;
+}
+
+html.dark .btn {
+  color: #fff;
+}
+
+/* Inputs / Form controls */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light */
+html.light input,
+html.light textarea,
+html.light select {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Dark */
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: #2a2a2a;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+/* Section titles / Lead text */
+.lead {
+  font-size: 1.2rem;
+}
+
+/* Navbar special override */
+html.dark .navbar-dark .navbar-nav .nav-link {
+  color: #f1f1f1;
+}
+
+html.light .navbar-light .navbar-nav .nav-link {
+  color: #212529;
+}
+
+/* Optional: helper pentru text forțat alb/negru */
+.text-dark-mode {
+  color: #000;
+}
+
+html.dark .text-dark-mode {
+  color: #fff;
+}
+
+.exercise-card {
+  min-height: 100%;
+}
+
+.exercise-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  z-index: 3;
+}
+
+

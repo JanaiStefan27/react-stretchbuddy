@@ -16,9 +16,9 @@
 
 .footer-description {
   font-size: 0.95rem;
-  color: #ccc;
   line-height: 1.4;
 }
+
 
 .footer-title {
   font-size: 1.1rem;
@@ -56,4 +56,22 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+html.dark .footer-custom {
+  background-color: #121212 !important;
+  color: #f1f1f1 !important;
+}
+
+html.light .footer-custom {
+  background-color: #f8f9fa !important;
+  color: #212529 !important;
+}
+
+html.dark .footer-text {
+  color: #dddddd !important;
+}
+
+html.light .footer-text {
+  color: #555555 !important;
 }

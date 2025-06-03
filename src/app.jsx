@@ -7,8 +7,7 @@ import Tenis from "./pages/sports/tenis";
 import Basketball from "./pages/sports/basketball";
 import Football from "./pages/sports/football";
 import Layout from "./components/layout";
-import { ThemeProvider } from "./context/themecontext";
-import "bootstrap/dist/css/bootstrap.min.css";
+import ThemeProvider from "./context/themecontext";
 import "./index.css";
 
 function App() {

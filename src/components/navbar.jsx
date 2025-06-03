@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useTheme } from "../context/themecontext";
@@ -7,6 +7,7 @@ import { useTheme } from "../context/themecontext";
 const Navbar = () => {
   const [user, setUser] = useState(null);
   const { theme, toggleTheme } = useTheme();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -15,11 +16,14 @@ const Navbar = () => {
     return () => unsubscribe();
   }, []);
 
-  const handleLogout = () => {
-    signOut(auth).then(() => {
-      alert("Te-ai delogat!");
-    });
+  const handleLogout = async () => {
+    await signOut(auth);
+    navigate("/");
   };
+
+  const themeButtonClass = `btn ${
+    theme === "dark" ? "btn-outline-light" : "btn-outline-dark"
+  }`;
 
   return (
     <nav
@@ -59,19 +63,13 @@ const Navbar = () => {
           </ul>
 
           <div className="d-flex align-items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              className={`btn ${
-                theme === "dark" ? "btn-outline-light" : "btn-outline-dark"
-              }`}
-              aria-label="Toggle theme"
-            >
+            <button onClick={toggleTheme} className="btn btn-secondary">
               {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
             </button>
 
             {!user ? (
               <>
-                <Link to="/login" className="btn btn-outline-primary">
+                <Link to="/login" className="btn btn-primary">
                   Login
                 </Link>
                 <Link to="/signup" className="btn btn-primary">
@@ -87,7 +85,6 @@ const Navbar = () => {
                 >
                   Salut, {user.email}
                 </span>
-
                 <button onClick={handleLogout} className="btn btn-danger">
                   Logout
                 </button>

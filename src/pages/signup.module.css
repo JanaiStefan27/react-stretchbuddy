@@ -1,10 +1,11 @@
 .signup {
   max-width: 400px;
   margin: 80px auto;
-  background: #fff;
+  background: var(--signup-bg, #fff);
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .signup h2 {
@@ -41,7 +42,16 @@
   color: #dc3545;
 }
 
-.dark .signup {
-  background: #ffffff;
+/* Dark mode fix */
+html.dark .signup {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+.title {
   color: #000;
+}
+
+html.dark .title {
+  color: #fff !important;
 }
