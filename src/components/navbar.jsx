@@ -104,7 +104,7 @@ const Navbar = () => {
                     theme === "dark" ? "text-light" : "text-dark"
                   }`}
                 >
-                  Salut, {user.email}
+                  Salut, {user.displayName || user.email}
                 </span>
                 <button onClick={handleLogout} className="btn btn-danger">
                   Logout

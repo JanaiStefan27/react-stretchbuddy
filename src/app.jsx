@@ -8,6 +8,7 @@ import Basketball from "./pages/sports/basketball";
 import Football from "./pages/sports/football";
 import Layout from "./components/layout";
 import ThemeProvider from "./context/themecontext";
+import Profile from "./pages/profile";
 import "./index.css";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="tenis" element={<Tenis />} />
             <Route path="basketball" element={<Basketball />} />
             <Route path="football" element={<Football />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
         </Routes>
       </BrowserRouter>

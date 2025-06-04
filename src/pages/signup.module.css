@@ -1,57 +1,118 @@
-.signup {
-  max-width: 400px;
-  margin: 80px auto;
-  background: var(--signup-bg, #fff);
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 2rem;
+}
+
+.formBox {
+  background: white;
+  padding: 2.5rem;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.signup h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.signup input {
+  max-width: 500px;
   width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
 }
 
-.signup button {
+.heading {
+   font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #000;
+}
+
+.label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  margin-top: 1.25rem;
+  color: #000;
+}
+
+.input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 0.75rem 0.25rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  background: transparent;
+  outline: none;
+}
+
+.input:focus {
+  border-bottom-color: #007bff;
+}
+
+.hints {
+  font-size: 0.85rem;
+  color: #555;
+  list-style: disc;
+  margin-left: 1.2rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.valid {
+  color: #198754;
+  font-weight: bold;
+}
+
+.button {
+  margin-top: 2rem;
   width: 100%;
   padding: 0.75rem;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
   font-weight: bold;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
-.signup button:hover {
+.button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.button:hover:not(:disabled) {
   background-color: #0056b3;
 }
 
-.message {
-  margin-top: 1rem;
-  text-align: center;
+.error {
   color: #dc3545;
+  text-align: center;
+  margin-top: 1rem;
 }
 
-/* Dark mode fix */
-html.dark .signup {
+.success {
+  color: #198754;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+html.dark .formBox {
   background-color: #1e1e1e;
-  color: #fff;
+  color: white;
 }
 
-.title {
-  color: #000;
+html.dark .input {
+  color: white;
+  border-bottom: 1px solid #555;
 }
 
-html.dark .title {
-  color: #fff !important;
+html.dark .input:focus {
+  border-bottom-color: #66b2ff;
 }
+
+html.dark .label,
+html.dark .heading {
+  color: #ffffff !important;
+}
+
