@@ -6,6 +6,7 @@ import { useTheme } from "../context/themecontext";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
+  const [expanded, setExpanded] = useState(false); // 👈 toggle state
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
@@ -19,11 +20,14 @@ const Navbar = () => {
   const handleLogout = async () => {
     await signOut(auth);
     navigate("/");
+    setExpanded(false); // close menu on logout
   };
 
-  const themeButtonClass = `btn ${
-    theme === "dark" ? "btn-outline-light" : "btn-outline-dark"
-  }`;
+  const handleToggle = () => {
+    setExpanded((prev) => !prev);
+  };
+
+  const closeMenu = () => setExpanded(false);
 
   return (
     <nav
@@ -32,47 +36,64 @@ const Navbar = () => {
       }`}
     >
       <div className="container-fluid">
-        <Link className="navbar-brand fw-bold fs-3" to="/">
+        <Link className="navbar-brand fw-bold fs-3" to="/" onClick={closeMenu}>
           StretchBuddy
         </Link>
 
+        {/* Hamburger button */}
         <button
           className="navbar-toggler"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#main-navbar"
-          aria-controls="main-navbar"
-          aria-expanded="false"
+          onClick={handleToggle}
+          aria-expanded={expanded}
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse" id="main-navbar">
+        {/* Collapsible menu */}
+        <div
+          className={`collapse navbar-collapse ${expanded ? "show" : ""}`}
+          id="main-navbar"
+        >
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <Link className="nav-link" to="/" onClick={closeMenu}>
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/services">
+              <Link className="nav-link" to="/services" onClick={closeMenu}>
                 Sporturi
               </Link>
             </li>
           </ul>
 
           <div className="d-flex align-items-center gap-3">
-            <button onClick={toggleTheme} className="btn btn-secondary">
+            <button
+              onClick={() => {
+                toggleTheme();
+                closeMenu();
+              }}
+              className="btn btn-secondary"
+            >
               {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
             </button>
 
             {!user ? (
               <>
-                <Link to="/login" className="btn btn-primary">
+                <Link
+                  to="/login"
+                  className="btn btn-primary"
+                  onClick={closeMenu}
+                >
                   Login
                 </Link>
-                <Link to="/signup" className="btn btn-primary">
+                <Link
+                  to="/signup"
+                  className="btn btn-primary"
+                  onClick={closeMenu}
+                >
                   Signup
                 </Link>
               </>

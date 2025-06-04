@@ -3,86 +3,79 @@ import { useTheme } from "../../context/themecontext";
 
 const level1Exercises = [
   {
-    title: "Rotiri de brațe",
-    description: "Execută rotiri lente ale brațelor timp de 10 secunde.",
-    image: "/images/rotiri-brate.jpg",
-    duration: 10,
-  },
-  {
-    title: "Genuflexiuni ușoare",
-    description: "Execută genuflexiuni cu greutatea pe călcâie.",
-    image: "/images/genuflexiuni.jpg",
-    duration: 10,
+    title: "Stretching gât și umeri",
+    description: "Întinderi ușoare pentru gât și umeri.",
+    image: "/images/football-neck.jpg",
   },
   {
     title: "Stretching picioare",
-    description: "Întinde musculatura picioarelor timp de 10 secunde.",
-    image: "/images/stretching-picioare.jpg",
-    duration: 10,
+    description: "Întinderi statice pentru coapse și gambe.",
+    image: "/images/football-legs.jpg",
+  },
+  {
+    title: "Stretching lombar",
+    description: "Întinderi în zona lombară pentru relaxare.",
+    image: "/images/football-lombar.jpg",
+  },
+  {
+    title: "Rotiri glezne",
+    description: "Mobilizare blândă a gleznelor.",
+    image: "/images/football-glezne.jpg",
   },
 ];
 
 const level2Exercises = [
   {
-    title: "Genuflexiuni avansate",
-    description: "Execută cu menținere 3 secunde în poziție joasă.",
-    video: "/video/genuflexiuni-avansate.mp4",
-    duration: 15,
+    title: "Genuflexiuni cu brațe",
+    description: "Genuflexiuni adânci cu brațele întinse în față.",
+    video: "/video/football-genuflexiuni.mp4",
   },
   {
-    title: "Sprint pe loc",
-    description: "Aleargă pe loc la intensitate maximă.",
-    video: "/video/sprint.mp4",
-    duration: 10,
+    title: "Rotiri de trunchi",
+    description: "Mișcări de rotație pentru coloana vertebrală.",
+    image: "/images/football-trunchi.jpg",
   },
   {
     title: "Fandări laterale",
-    description: "Execută fandări laterale pentru mobilitate.",
-    video: "/video/fandari.mp4",
-    duration: 12,
+    description: "Mișcări pentru activarea coapselor.",
+    image: "/images/football-fandari.jpg",
   },
 ];
 
 const level3Exercises = [
   {
-    title: "Sărituri pe loc",
-    description: "Execută sărituri explozive vertical timp de 10 secunde.",
-    video: "/video/sarituri.mp4",
-    duration: 10,
+    title: "Control mingea stânga-dreapta",
+    description: "Mișcă mingea lateral cu ambele picioare.",
+    video: "/video/football-mingea1.mp4",
   },
   {
-    title: "Poziție plank",
-    description: "Menține poziția plank 15 secunde.",
-    image: "/images/plank.jpg",
-    duration: 15,
+    title: "Dribling în cerc",
+    description: "Driblează mingea în jurul unei zone mici.",
+    video: "/video/football-mingea2.mp4",
   },
   {
-    title: "Stretching dinamic",
-    description: "Execută mișcări ample pentru întinderea mușchilor.",
-    video: "/video/stretching-dinamic.mp4",
-    duration: 12,
-  },
-  {
-    title: "Rotiri trunchi",
-    description: "Fă rotiri ușoare ale trunchiului pentru relaxare.",
-    image: "/images/rotiri-trunchi.jpg",
-    duration: 10,
+    title: "Mingea cu pas scurt",
+    description: "Simulează pase scurte cu mingea în control.",
+    video: "/video/football-pas.mp4",
   },
 ];
 
 const Football = () => {
   const [level, setLevel] = useState(1);
   const [index, setIndex] = useState(0);
-  const [timer, setTimer] = useState(level1Exercises[0].duration);
-  const [isPaused, setIsPaused] = useState(true);
   const [globalProgress, setGlobalProgress] = useState(0);
-  const [manualStart, setManualStart] = useState(false);
   const { theme } = useTheme();
 
   const getExercises = () => {
     if (level === 1) return level1Exercises;
     if (level === 2) return level2Exercises;
     return level3Exercises;
+  };
+
+  const getLevelTitle = () => {
+    if (level === 1) return "Stretching";
+    if (level === 2) return "Încălzire avansată";
+    return "Încălzire cu mingea";
   };
 
   const currentList = getExercises();
@@ -92,54 +85,18 @@ const Football = () => {
       setIndex(currentList.length);
       return;
     }
-
     setIndex(i);
-    setTimer(currentList[i].duration);
-    setIsPaused(true);
-    setManualStart(level > 1); // doar nivel 2+ cu start manual
-
-    if (level === 1) {
-      setTimeout(() => setIsPaused(false), 2000); // auto start pt nivel 1
-    }
-  };
-
-  const skipExercise = () => {
-    updateProgress(index + 1);
-    startExercise(index + 1);
-  };
-
-  const updateProgress = (i) => {
-    const percentage = (i / currentList.length) * 100;
-    setGlobalProgress(percentage);
-  };
-
-  const handleStartManual = () => {
-    setIsPaused(false);
-    setManualStart(false);
+    const progress = (i / currentList.length) * 100;
+    setGlobalProgress(progress);
   };
 
   useEffect(() => {
     startExercise(0);
   }, [level]);
 
-  useEffect(() => {
-    if (isPaused || index >= currentList.length) return;
-
-    const interval = setInterval(() => {
-      setTimer((prev) => {
-        const next = prev - 1;
-        if (next <= 0) {
-          clearInterval(interval);
-          updateProgress(index + 1);
-          setTimeout(() => startExercise(index + 1), 1000);
-          return 0;
-        }
-        return next;
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [isPaused, index]);
+  const nextExercise = () => {
+    startExercise(index + 1);
+  };
 
   if (index >= currentList.length) {
     return (
@@ -148,7 +105,7 @@ const Football = () => {
           <>
             <h2 className="mb-3">🎉 Felicitări! 🎉</h2>
             <p className="lead mb-4">
-              Ai finalizat toate cele 3 niveluri de exerciții pentru fotbal! 🏆
+              Ai finalizat toate cele 3 niveluri de exerciții pentru fotbal! ⚽
             </p>
             <div className="d-flex justify-content-center gap-3 flex-wrap">
               <button
@@ -164,7 +121,7 @@ const Football = () => {
           </>
         ) : (
           <>
-            <h2 className="mb-4">Ai terminat încălzirea Nivel {level}! ⚽</h2>
+            <h2 className="mb-4">Ai terminat încălzirea Nivel {level}!</h2>
             <div className="d-flex justify-content-center gap-3">
               <button
                 className="btn btn-success"
@@ -176,7 +133,7 @@ const Football = () => {
                 className="btn btn-secondary"
                 onClick={() => startExercise(0)}
               >
-                Înapoi la început
+                Reia Nivelul
               </button>
             </div>
           </>
@@ -188,22 +145,15 @@ const Football = () => {
   const ex = currentList[index];
 
   return (
-    <div className="container text-center py-5">
-      {/* Buton de întoarcere la nivelul anterior */}
-      {level > 1 && index === 0 && (
-        <div className="mb-3">
-          <button
-            className="btn btn-outline-secondary"
-            onClick={() => setLevel(level - 1)}
-          >
-            ← Înapoi la Nivelul {level - 1}
-          </button>
-        </div>
-      )}
+    <div className={`container py-5 ${theme}`}>
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h4 className="fw-bold">⚽ Football</h4>
+        <h5 className="text-center w-100 text-uppercase">
+          Nivelul {level} – {getLevelTitle()}
+        </h5>
+      </div>
 
-      <h2 className="mb-4">{ex.title}</h2>
-
-      {/* Bară de progres */}
+      {/* Progress Bar */}
       <div
         style={{
           height: "15px",
@@ -211,65 +161,62 @@ const Football = () => {
           background: "#eee",
           borderRadius: "10px",
           overflow: "hidden",
-          marginBottom: "20px",
+          marginBottom: "30px",
         }}
       >
         <div
           style={{
             width: `${globalProgress}%`,
             height: "100%",
-            background: "#198754",
+            background: "#0d6efd",
             transition: "width 0.5s ease-in-out",
           }}
         />
       </div>
 
-      {/* Afișare imagine sau video */}
-      {ex.image ? (
-        <img
-          src={ex.image}
-          alt={ex.title}
-          className="img-fluid mb-4"
-          style={{ maxHeight: "400px", borderRadius: "12px" }}
-        />
-      ) : (
-        <video
-          src={ex.video}
-          controls
-          className="mb-4"
-          style={{ maxWidth: "100%", borderRadius: "12px" }}
-        />
-      )}
-
-      <p className="lead">{ex.description}</p>
-
-      <div className="mt-4">
-        {!manualStart ? (
-          <>
-            <div
-              className="fw-bold"
-              style={{
-                fontSize: "2rem",
-                background: "#222",
-                color: "#fff",
-                display: "inline-block",
-                padding: "10px 20px",
-                borderRadius: "10px",
-              }}
-            >
-              ⏱ {timer}s
-            </div>
-            <div className="mt-3">
-              <button className="btn btn-danger" onClick={skipExercise}>
-                Skip exercițiu
-              </button>
-            </div>
-          </>
+      {/* Imagine / Video */}
+      <div className="text-center mb-4">
+        {ex.image ? (
+          <img
+            src={ex.image}
+            alt={ex.title}
+            className="img-fluid"
+            style={{ width: "100%", borderRadius: "12px" }}
+          />
         ) : (
-          <button className="btn btn-primary" onClick={handleStartManual}>
-            Start
+          <video
+            src={ex.video}
+            controls
+            className="w-100"
+            style={{ borderRadius: "12px" }}
+          />
+        )}
+      </div>
+
+      <h3 className="text-center mb-3">{ex.title}</h3>
+      <p className="lead text-center">{ex.description}</p>
+
+      {/* Butoane de navigare */}
+      <div className="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+        {index === 0 && level > 1 && (
+          <button
+            className="btn btn-secondary btn-lg"
+            onClick={() => setLevel(level - 1)}
+          >
+            ← Înapoi la Nivelul {level - 1}
           </button>
         )}
+        {index > 0 && (
+          <button
+            className="btn btn-primary btn-lg"
+            onClick={() => startExercise(index - 1)}
+          >
+            ← Exercițiul anterior
+          </button>
+        )}
+        <button className="btn btn-primary btn-lg" onClick={nextExercise}>
+          Următorul exercițiu →
+        </button>
       </div>
     </div>
   );
