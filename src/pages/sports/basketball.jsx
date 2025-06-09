@@ -3,42 +3,45 @@ import { useTheme } from "../../context/themecontext";
 
 const level1Exercises = [
   {
-    title: "Stretching umeri și brațe",
-    description: "Întinderi pentru umeri și triceps.",
-    image: "/images/basketball-brate.jpg",
+    title: "Stretching gât și umeri",
+    description: "Întinderi ușoare pentru gât.",
+    image: "/images/stretching-neck.jpg",
   },
   {
-    title: "Stretching spate și lombar",
-    description: "Întinderi pentru relaxarea zonei lombare.",
-    image: "/images/basketball-lombar.jpg",
+    title: "Stretching brate",
+    description: "Întinderi pentru brate",
+    image: "/images/stretching-arms.jpg",
+  },
+  {
+    title: "Stretching bazin",
+    description: "Întinderi în zona bazinului.",
+    image: "/images/stretching-middle.jpg",
   },
   {
     title: "Stretching picioare",
-    description: "Întinderi statice pentru gambe și coapse.",
-    image: "/images/basketball-picioare.jpg",
-  },
-  {
-    title: "Rotiri glezne și genunchi",
-    description: "Mobilizare blândă a articulațiilor inferioare.",
-    image: "/images/basketball-rotiri.jpg",
+    description: "Întinderi statice pentru coapse și gambe.",
+    image: "/images/stretching-lowerbody.jpg",
   },
 ];
 
 const level2Exercises = [
   {
-    title: "Genuflexiuni explozive",
-    description: "Genuflexiuni cu ridicare ușoară pe vârfuri.",
-    video: "/video/basketball-genuflexiuni.mp4",
+    title: "Stretching pentru umeri și piept",
+    description:
+      "Exercițiu excelent pentru relaxarea umerilor și deschiderea pieptului. Ajută la corectarea posturii și la eliberarea tensiunii acumulate în partea superioară a spatelui. Ideal la începutul sau la finalul sesiunii de antrenament.",
+    video: "/video/stretching-shoulder-chest.mp4",
   },
   {
-    title: "Fandări în mers",
-    description: "Fandări frontale controlate, mers înainte.",
-    image: "/images/basketball-fandari.jpg",
+    title: "Genuoflexiuni explozive",
+    description:
+      "Acest exercițiu dezvoltă puterea explozivă a picioarelor. Genuflexiunile urmate de o săritură controlată te ajută să-ți activezi rapid musculatura pentru mișcări intense",
+    video: "/video/jump-squats.mp4",
   },
   {
-    title: "Sărituri pe loc",
-    description: "Sărituri verticale cu impact controlat.",
-    image: "/images/basketball-sarituri.jpg",
+    title: "Ridicări controlate ale genunchilor",
+    description:
+      "Un exercițiu ideal de activare înainte de antrenament. Genunchii sunt ridicați controlat, pe rând, pentru a stimula mobilitatea șoldurilor, coordonarea și musculatura abdominală. Se poate efectua ca parte a unei încălziri dinamice ușoare.",
+    video: "/video/knee-raises.mp4",
   },
 ];
 

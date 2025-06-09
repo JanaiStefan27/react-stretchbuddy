@@ -3,60 +3,66 @@ import { useTheme } from "../../context/themecontext";
 
 const level1Exercises = [
   {
-    title: "Stretching brațe",
-    description: "Întinderi ușoare pentru antebrațe și umeri.",
-    image: "/images/tenis-brate.jpg",
+    title: "Stretching gât și umeri",
+    description: "Întinderi ușoare pentru gât.",
+    image: "/images/stretching-neck.jpg",
   },
   {
-    title: "Stretching trunchi",
-    description: "Rotații lente ale trunchiului pentru mobilitate.",
-    image: "/images/tenis-trunchi.jpg",
+    title: "Stretching brate",
+    description: "Întinderi pentru brate",
+    image: "/images/stretching-arms.jpg",
+  },
+  {
+    title: "Stretching bazin",
+    description: "Întinderi în zona bazinului.",
+    image: "/images/stretching-middle.jpg",
   },
   {
     title: "Stretching picioare",
     description: "Întinderi statice pentru coapse și gambe.",
-    image: "/images/tenis-picioare.jpg",
-  },
-  {
-    title: "Rotiri încheieturi",
-    description: "Rotiri ușoare ale încheieturilor mâinii.",
-    image: "/images/tenis-incheieturi.jpg",
+    image: "/images/stretching-lowerbody.jpg",
   },
 ];
 
 const level2Exercises = [
   {
-    title: "Sărituri laterale",
-    description: "Mișcări scurte stânga-dreapta pentru activare.",
-    video: "/video/tenis-sarituri.mp4",
+    title: "Stretching pentru umeri și piept",
+    description:
+      "Exercițiu excelent pentru relaxarea umerilor și deschiderea pieptului. Ajută la corectarea posturii și la eliberarea tensiunii acumulate în partea superioară a spatelui. Ideal la începutul sau la finalul sesiunii de antrenament.",
+    video: "/video/stretching-shoulder-chest.mp4",
   },
   {
-    title: "Alergare ușoară",
-    description: "Alergare ușoară pe loc pentru încălzirea generală.",
-    image: "/images/tenis-alergare.jpg",
+    title: "Genuoflexiuni explozive",
+    description:
+      "Acest exercițiu dezvoltă puterea explozivă a picioarelor. Genuflexiunile urmate de o săritură controlată te ajută să-ți activezi rapid musculatura pentru mișcări intense",
+    video: "/video/jump-squats.mp4",
   },
   {
-    title: "Genuflexiuni controlate",
-    description: "Genuflexiuni lente pentru activarea trenului inferior.",
-    image: "/images/tenis-genuflexiuni.jpg",
+    title: "Ridicări controlate ale genunchilor",
+    description:
+      "Un exercițiu ideal de activare înainte de antrenament. Genunchii sunt ridicați controlat, pe rând, pentru a stimula mobilitatea șoldurilor, coordonarea și musculatura abdominală. Se poate efectua ca parte a unei încălziri dinamice ușoare.",
+    video: "/video/knee-raises.mp4",
   },
 ];
 
 const level3Exercises = [
   {
-    title: "Drill de forehand",
-    description: "Simulează mișcarea de forehand fără minge.",
-    video: "/video/tenis-forehand.mp4",
+    title: "Stretching pentru coapse și spate",
+    description:
+      "Acest exercițiu întinde mușchii posteriori ai coapselor și zona lombară. Poziția controlată ajută la reducerea tensiunii și la menținerea flexibilității, fiind ideal atât la început cât și la sfârșitul unei sesiuni de antrenament.",
+    video: "/video/tenis/tenis-stretching.mp4",
   },
   {
-    title: "Drill de backhand",
-    description: "Simulează mișcarea de backhand din poziție statică.",
-    video: "/video/tenis-backhand.mp4",
+    title: "Servă de încalzire",
+    description:
+      "Acest exercițiu pregătește brațul, umărul și trunchiul pentru mișcările specifice tenisului. Serviciul executat cu racheta ajută la coordonare, viteză și precizie — esențial pentru începerea oricărui antrenament eficient.",
+    video: "/video/tenis/tenis-serv.mp4",
   },
   {
-    title: "Mobilitate laterală cu rachetă",
-    description: "Mișcări rapide cu schimbări de direcție.",
-    video: "/video/tenis-lateral.mp4",
+    title: "Raliu de încălzire ",
+    description:
+      "Acest exercițiu presupune lovituri ușoare între doi jucători și ajută la reglarea coordonării, ritmului și a loviturii corecte. Este un pas esențial înainte de un antrenament complet pe teren.",
+    video: "/video/tenis/tenis-pass.mp4",
   },
 ];
 

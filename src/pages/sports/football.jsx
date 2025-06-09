@@ -4,59 +4,62 @@ import { useTheme } from "../../context/themecontext";
 const level1Exercises = [
   {
     title: "Stretching gât și umeri",
-    description: "Întinderi ușoare pentru gât și umeri.",
-    image: "/images/football-neck.jpg",
+    description: "Întinderi ușoare pentru gât.",
+    image: "/images/stretching-neck.jpg",
+  },
+  {
+    title: "Stretching brate",
+    description: "Întinderi pentru brate",
+    image: "/images/stretching-arms.jpg",
+  },
+  {
+    title: "Stretching bazin",
+    description: "Întinderi în zona bazinului.",
+    image: "/images/stretching-middle.jpg",
   },
   {
     title: "Stretching picioare",
     description: "Întinderi statice pentru coapse și gambe.",
-    image: "/images/football-legs.jpg",
-  },
-  {
-    title: "Stretching lombar",
-    description: "Întinderi în zona lombară pentru relaxare.",
-    image: "/images/football-lombar.jpg",
-  },
-  {
-    title: "Rotiri glezne",
-    description: "Mobilizare blândă a gleznelor.",
-    image: "/images/football-glezne.jpg",
+    image: "/images/stretching-lowerbody.jpg",
   },
 ];
 
 const level2Exercises = [
   {
-    title: "Genuflexiuni cu brațe",
-    description: "Genuflexiuni adânci cu brațele întinse în față.",
-    video: "/video/football-genuflexiuni.mp4",
+    title: "Stretching asistat pentru coapse",
+    description: "Întinderea mușchilor posteriori ai coapsei (hamstring)",
+    video: "/video/football/football-stretching.mp4",
   },
   {
-    title: "Rotiri de trunchi",
-    description: "Mișcări de rotație pentru coloana vertebrală.",
-    image: "/images/football-trunchi.jpg",
+    title: "Activare dinamică – Sărituri verticale",
+    description: "Încălzire intensă pentru picioare și trunchi",
+    video: "/video/football/football-dinamic-jump.mp4",
   },
   {
-    title: "Fandări laterale",
-    description: "Mișcări pentru activarea coapselor.",
-    image: "/images/football-fandari.jpg",
+    title: "Drill de agilitate laterală",
+    description: "Încălzire specifică pentru sporturi cu mișcări explozive.",
+    video: "/video/football/football-drill.mp4",
   },
 ];
 
 const level3Exercises = [
   {
-    title: "Control mingea stânga-dreapta",
-    description: "Mișcă mingea lateral cu ambele picioare.",
-    video: "/video/football-mingea1.mp4",
+    title: "Sărituri explozive pentru activare”",
+    description:
+      "Exercițiu dinamic pentru activarea rapidă a mușchilor picioarelor. Săriturile repetate dezvoltă explozia, coordonarea și pregătesc corpul pentru efort intens.",
+    video: "/video/football/football-explozive-activation.mp4",
   },
   {
-    title: "Dribling în cerc",
-    description: "Driblează mingea în jurul unei zone mici.",
-    video: "/video/football-mingea2.mp4",
+    title: "Alergare laterală rapidă",
+    description:
+      "Acest exercițiu activează întreaga parte inferioară a corpului și îți dezvoltă coordonarea laterală. Ideal pentru încălzire înainte de sporturi care implică deplasări rapide stânga-dreapta.",
+    video: "/video/football/football-sprint.mp4",
   },
   {
-    title: "Mingea cu pas scurt",
-    description: "Simulează pase scurte cu mingea în control.",
-    video: "/video/football-pas.mp4",
+    title: "Controlul mingii – Jonglerie în mișcare",
+    description:
+      "Acest exercițiu ajută la dezvoltarea controlului fin asupra mingii și a coordonării generale. Jonglând mingea în aer în timp ce te miști, îți antrenezi tehnica, echilibrul și concentrarea — un exercițiu ideal pentru încălzirea specifică în fotbal.",
+    video: "/video/football/football-control-ball.mp4",
   },
 ];
 
