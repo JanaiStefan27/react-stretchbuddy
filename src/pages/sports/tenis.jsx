@@ -1,162 +1,141 @@
 import React, { useEffect, useState } from "react";
 import { useTheme } from "../../context/themecontext";
 
-const level1Exercises = [
+const level1 = [0, 1, 2, 3];
+const level2 = [4, 5, 6];
+const level3 = [7, 8, 9];
+
+const allExercises = [
   {
     title: "Stretching gât și umeri",
     description: "Întinderi ușoare pentru gât.",
     image: "/images/stretching-neck.jpg",
+    poster: "/images/stretching-neck.jpg",
+    label: "Ex.1 - Nivel 1",
   },
   {
     title: "Stretching brate",
     description: "Întinderi pentru brate",
     image: "/images/stretching-arms.jpg",
+    poster: "/images/stretching-arms.jpg",
+    label: "Ex.2 - Nivel 1",
   },
   {
     title: "Stretching bazin",
     description: "Întinderi în zona bazinului.",
     image: "/images/stretching-middle.jpg",
+    poster: "/images/stretching-middle.jpg",
+    label: "Ex.3 - Nivel 1",
   },
   {
     title: "Stretching picioare",
     description: "Întinderi statice pentru coapse și gambe.",
     image: "/images/stretching-lowerbody.jpg",
+    poster: "/images/stretching-lowerbody.jpg",
+    label: "Ex.4 - Nivel 1",
   },
-];
-
-const level2Exercises = [
   {
     title: "Stretching pentru umeri și piept",
     description:
-      "Exercițiu excelent pentru relaxarea umerilor și deschiderea pieptului. Ajută la corectarea posturii și la eliberarea tensiunii acumulate în partea superioară a spatelui. Ideal la începutul sau la finalul sesiunii de antrenament.",
+      "Exercițiu excelent pentru relaxarea umerilor și deschiderea pieptului.",
     video: "/video/stretching-shoulder-chest.mp4",
+    poster: "/images/tenis.poster/poster-tenis-1.png",
+    label: "Ex.1 - Nivel 2",
   },
   {
-    title: "Genuoflexiuni explozive",
-    description:
-      "Acest exercițiu dezvoltă puterea explozivă a picioarelor. Genuflexiunile urmate de o săritură controlată te ajută să-ți activezi rapid musculatura pentru mișcări intense",
+    title: "Genoflexiuni explozive",
+    description: "Acest exercițiu dezvoltă puterea explozivă a picioarelor.",
     video: "/video/jump-squats.mp4",
+    poster: "/images/tenis.poster/poster-tenis-2.png",
+    label: "Ex.2 - Nivel 2",
   },
   {
     title: "Ridicări controlate ale genunchilor",
     description:
-      "Un exercițiu ideal de activare înainte de antrenament. Genunchii sunt ridicați controlat, pe rând, pentru a stimula mobilitatea șoldurilor, coordonarea și musculatura abdominală. Se poate efectua ca parte a unei încălziri dinamice ușoare.",
+      "Genunchii sunt ridicați controlat pentru mobilitate și coordonare.",
     video: "/video/knee-raises.mp4",
+    poster: "/images/tenis.poster/poster-tenis-3.png",
+    label: "Ex.3 - Nivel 2",
   },
-];
-
-const level3Exercises = [
   {
     title: "Stretching pentru coapse și spate",
     description:
-      "Acest exercițiu întinde mușchii posteriori ai coapselor și zona lombară. Poziția controlată ajută la reducerea tensiunii și la menținerea flexibilității, fiind ideal atât la început cât și la sfârșitul unei sesiuni de antrenament.",
+      "Întinde coapsele și zona lombară. Ideal la început și sfârșit.",
     video: "/video/tenis/tenis-stretching.mp4",
+    poster: "/images/tenis.poster/poster-tenis-4.png",
+    label: "Ex.1 - Nivel 3",
   },
   {
     title: "Servă de încalzire",
-    description:
-      "Acest exercițiu pregătește brațul, umărul și trunchiul pentru mișcările specifice tenisului. Serviciul executat cu racheta ajută la coordonare, viteză și precizie — esențial pentru începerea oricărui antrenament eficient.",
+    description: "Pregătește brațul și trunchiul pentru servă.",
     video: "/video/tenis/tenis-serv.mp4",
+    poster: "/images/tenis.poster/poster-tenis-5.png",
+    label: "Ex.2 - Nivel 3",
   },
   {
-    title: "Raliu de încălzire ",
-    description:
-      "Acest exercițiu presupune lovituri ușoare între doi jucători și ajută la reglarea coordonării, ritmului și a loviturii corecte. Este un pas esențial înainte de un antrenament complet pe teren.",
+    title: "Raliu de încălzire",
+    description: "Lovituri ușoare între jucători, coordonare și ritm.",
     video: "/video/tenis/tenis-pass.mp4",
+    poster: "/images/tenis.poster/poster-tenis-6.png",
+    label: "Ex.3 - Nivel 3",
   },
 ];
 
 const Tennis = () => {
-  const [level, setLevel] = useState(1);
-  const [index, setIndex] = useState(0);
-  const [globalProgress, setGlobalProgress] = useState(0);
   const { theme } = useTheme();
+  const [index, setIndex] = useState(0);
+  const [hover, setHover] = useState(false);
 
-  const getExercises = () => {
-    if (level === 1) return level1Exercises;
-    if (level === 2) return level2Exercises;
-    return level3Exercises;
+  const ex = allExercises[index];
+  const level = index < 4 ? 1 : index < 7 ? 2 : 3;
+  const levelTitle =
+    level === 1
+      ? "Stretching"
+      : level === 2
+      ? "Încălzire avansată"
+      : "Încălzire cu racheta";
+
+  const getLevelIndexes = (lvl) => {
+    return lvl === 1 ? level1 : lvl === 2 ? level2 : level3;
   };
 
-  const getLevelTitle = () => {
-    if (level === 1) return "Stretching";
-    if (level === 2) return "Încălzire avansată";
-    return "Încălzire cu racheta";
-  };
-
-  const currentList = getExercises();
-
-  const startExercise = (i) => {
-    if (i >= currentList.length) {
-      setIndex(currentList.length);
-      return;
-    }
-    setIndex(i);
-    const progress = (i / currentList.length) * 100;
-    setGlobalProgress(progress);
-  };
-
-  useEffect(() => {
-    startExercise(0);
-  }, [level]);
-
-  const nextExercise = () => {
-    startExercise(index + 1);
-  };
-
-  if (index >= currentList.length) {
-    return (
-      <div className={`container text-center py-5 ${theme}`}>
-        {level === 3 ? (
-          <>
-            <h2 className="mb-3">🎉 Felicitări! 🎉</h2>
-            <p className="lead mb-4">
-              Ai finalizat toate cele 3 niveluri de exerciții pentru tenis! 🎾
-            </p>
-            <div className="d-flex justify-content-center gap-3 flex-wrap">
-              <button
-                className="btn btn-success"
-                onClick={() => startExercise(0)}
-              >
-                🔁 Reia Nivelul 3
-              </button>
-              <button className="btn btn-secondary" onClick={() => setLevel(1)}>
-                🔙 Înapoi la Nivelul 1
-              </button>
-            </div>
-          </>
-        ) : (
-          <>
-            <h2 className="mb-4">Ai terminat încălzirea Nivel {level}!</h2>
-            <div className="d-flex justify-content-center gap-3">
-              <button
-                className="btn btn-success"
-                onClick={() => setLevel(level + 1)}
-              >
-                Next Level →
-              </button>
-              <button
-                className="btn btn-secondary"
-                onClick={() => startExercise(0)}
-              >
-                Reia Nivelul
-              </button>
-            </div>
-          </>
-        )}
-      </div>
-    );
-  }
-
-  const ex = currentList[index];
+  const currentLevelIndexes = getLevelIndexes(level);
+  const indexInLevel = currentLevelIndexes.indexOf(index);
+  const progress = ((indexInLevel + 1) / currentLevelIndexes.length) * 100;
 
   return (
     <div className={`container py-5 ${theme}`}>
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h4 className="fw-bold">🎾 Tennis</h4>
         <h5 className="text-center w-100 text-uppercase">
-          Nivelul {level} – {getLevelTitle()}
+          Nivelul {level} – {levelTitle}
         </h5>
+      </div>
+
+      <div className="d-flex justify-content-center gap-3 flex-wrap mb-4">
+        {allExercises.map((item, i) => (
+          <div key={i} className="text-center">
+            <img
+              src={item.poster || item.image}
+              alt={`ex-${i}`}
+              onClick={() => setIndex(i)}
+              style={{
+                width: index === i ? 75 : 60,
+                height: index === i ? 75 : 60,
+                borderRadius: "50%",
+                objectFit: "cover",
+                border: index === i ? "3px solid #0d6efd" : "2px solid #aaa",
+                cursor: "pointer",
+                transition: "all 0.2s ease-in-out",
+              }}
+            />
+            {index === i && (
+              <div className="mt-1 fw-semibold small text-nowrap">
+                {item.label}
+              </div>
+            )}
+          </div>
+        ))}
       </div>
 
       <div
@@ -171,7 +150,7 @@ const Tennis = () => {
       >
         <div
           style={{
-            width: `${globalProgress}%`,
+            width: `${progress}%`,
             height: "100%",
             background: "#0d6efd",
             transition: "width 0.5s ease-in-out",
@@ -179,21 +158,82 @@ const Tennis = () => {
         />
       </div>
 
-      <div className="text-center mb-4">
-        {ex.image ? (
+      <div
+        className="position-relative mb-4"
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
+        {ex.video ? (
+          <video
+            src={ex.video}
+            autoPlay
+            muted
+            loop
+            controls
+            poster={ex.poster}
+            className="w-100"
+            style={{ height: 600, objectFit: "cover", borderRadius: 12 }}
+          />
+        ) : (
           <img
             src={ex.image}
             alt={ex.title}
             className="img-fluid"
-            style={{ width: "100%", borderRadius: "12px" }}
+            style={{
+              height: 600,
+              width: "100%",
+              borderRadius: 12,
+            }}
           />
-        ) : (
-          <video
-            src={ex.video}
-            controls
-            className="w-100"
-            style={{ borderRadius: "12px" }}
-          />
+        )}
+
+        {hover && index > 0 && (
+          <div
+            className="position-absolute top-50 start-0 translate-middle-y d-flex align-items-center"
+            style={{
+              backgroundColor: "rgba(0,0,0,0.2)",
+              width: 50,
+              height: "60%",
+              borderRadius: "0 8px 8px 0",
+            }}
+          >
+            <button
+              onClick={() => setIndex(index - 1)}
+              style={{
+                background: "none",
+                border: "none",
+                fontSize: "2.5rem",
+                color: "#fff",
+                cursor: "pointer",
+              }}
+            >
+              ←
+            </button>
+          </div>
+        )}
+        {hover && index < allExercises.length - 1 && (
+          <div
+            className="position-absolute top-50 end-0 translate-middle-y d-flex align-items-center justify-content-end"
+            style={{
+              backgroundColor: "rgba(0,0,0,0.2)",
+              width: 50,
+              height: "60%",
+              borderRadius: "8px 0 0 8px",
+            }}
+          >
+            <button
+              onClick={() => setIndex(index + 1)}
+              style={{
+                background: "none",
+                border: "none",
+                fontSize: "2.5rem",
+                color: "#fff",
+                cursor: "pointer",
+              }}
+            >
+              →
+            </button>
+          </div>
         )}
       </div>
 
@@ -201,25 +241,22 @@ const Tennis = () => {
       <p className="lead text-center">{ex.description}</p>
 
       <div className="d-flex justify-content-center gap-3 mt-4 flex-wrap">
-        {index === 0 && level > 1 && (
-          <button
-            className="btn btn-secondary btn-lg"
-            onClick={() => setLevel(level - 1)}
-          >
-            ← Înapoi la Nivelul {level - 1}
-          </button>
-        )}
         {index > 0 && (
           <button
             className="btn btn-primary btn-lg"
-            onClick={() => startExercise(index - 1)}
+            onClick={() => setIndex(index - 1)}
           >
             ← Exercițiul anterior
           </button>
         )}
-        <button className="btn btn-primary btn-lg" onClick={nextExercise}>
-          Următorul exercițiu →
-        </button>
+        {index < allExercises.length - 1 && (
+          <button
+            className="btn btn-primary btn-lg"
+            onClick={() => setIndex(index + 1)}
+          >
+            Următorul exercițiu →
+          </button>
+        )}
       </div>
     </div>
   );
