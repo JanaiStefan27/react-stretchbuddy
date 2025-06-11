@@ -1,5 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useTheme } from "../../context/themecontext";
+import LevelHeader from "../../components/reuse.sports/levelheader";
+import ExerciseThumbnails from "../../components/reuse.sports/exercisesethumbnails";
+import MediaDisplay from "../../components/reuse.sports/mediadisplay";
+import ProgressBar from "../../components/reuse.sports/progress";
+import NavigationButtons from "../../components/reuse.sports/navigationbuttons";
 
 const level1 = [0, 1, 2, 3];
 const level2 = [4, 5, 6];
@@ -105,159 +110,39 @@ const Tennis = () => {
 
   return (
     <div className={`container py-5 ${theme}`}>
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h4 className="fw-bold">🎾 Tennis</h4>
-        <h5 className="text-center w-100 text-uppercase">
-          Nivelul {level} – {levelTitle}
-        </h5>
-      </div>
+      <LevelHeader
+        sportIcon="🎾"
+        sportName="Tenis"
+        level={level}
+        levelTitle={levelTitle}
+      />
 
-      <div className="d-flex justify-content-center gap-3 flex-wrap mb-4">
-        {allExercises.map((item, i) => (
-          <div key={i} className="text-center">
-            <img
-              src={item.poster || item.image}
-              alt={`ex-${i}`}
-              onClick={() => setIndex(i)}
-              style={{
-                width: index === i ? 75 : 60,
-                height: index === i ? 75 : 60,
-                borderRadius: "50%",
-                objectFit: "cover",
-                border: index === i ? "3px solid #0d6efd" : "2px solid #aaa",
-                cursor: "pointer",
-                transition: "all 0.2s ease-in-out",
-              }}
-            />
-            {index === i && (
-              <div className="mt-1 fw-semibold small text-nowrap">
-                {item.label}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+      <NavigationButtons
+        index={index}
+        setIndex={setIndex}
+        level={level}
+        total={allExercises.length}
+      />
 
-      <div
-        style={{
-          height: "15px",
-          width: "100%",
-          background: "#eee",
-          borderRadius: "10px",
-          overflow: "hidden",
-          marginBottom: "30px",
-        }}
-      >
-        <div
-          style={{
-            width: `${progress}%`,
-            height: "100%",
-            background: "#0d6efd",
-            transition: "width 0.5s ease-in-out",
-          }}
-        />
-      </div>
+      <ProgressBar value={progress} />
 
-      <div
-        className="position-relative mb-4"
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-      >
-        {ex.video ? (
-          <video
-            src={ex.video}
-            autoPlay
-            muted
-            loop
-            controls
-            poster={ex.poster}
-            className="w-100"
-            style={{ height: 600, objectFit: "cover", borderRadius: 12 }}
-          />
-        ) : (
-          <img
-            src={ex.image}
-            alt={ex.title}
-            className="img-fluid"
-            style={{
-              height: 600,
-              width: "100%",
-              borderRadius: 12,
-            }}
-          />
-        )}
-
-        {hover && index > 0 && (
-          <div
-            className="position-absolute top-50 start-0 translate-middle-y d-flex align-items-center"
-            style={{
-              backgroundColor: "rgba(0,0,0,0.2)",
-              width: 50,
-              height: "60%",
-              borderRadius: "0 8px 8px 0",
-            }}
-          >
-            <button
-              onClick={() => setIndex(index - 1)}
-              style={{
-                background: "none",
-                border: "none",
-                fontSize: "2.5rem",
-                color: "#fff",
-                cursor: "pointer",
-              }}
-            >
-              ←
-            </button>
-          </div>
-        )}
-        {hover && index < allExercises.length - 1 && (
-          <div
-            className="position-absolute top-50 end-0 translate-middle-y d-flex align-items-center justify-content-end"
-            style={{
-              backgroundColor: "rgba(0,0,0,0.2)",
-              width: 50,
-              height: "60%",
-              borderRadius: "8px 0 0 8px",
-            }}
-          >
-            <button
-              onClick={() => setIndex(index + 1)}
-              style={{
-                background: "none",
-                border: "none",
-                fontSize: "2.5rem",
-                color: "#fff",
-                cursor: "pointer",
-              }}
-            >
-              →
-            </button>
-          </div>
-        )}
-      </div>
+      <ExerciseThumbnails
+        exercises={allExercises}
+        currentIndex={index}
+        setIndex={setIndex}
+      />
 
       <h3 className="text-center mb-3">{ex.title}</h3>
       <p className="lead text-center">{ex.description}</p>
 
-      <div className="d-flex justify-content-center gap-3 mt-4 flex-wrap">
-        {index > 0 && (
-          <button
-            className="btn btn-primary btn-lg"
-            onClick={() => setIndex(index - 1)}
-          >
-            ← Exercițiul anterior
-          </button>
-        )}
-        {index < allExercises.length - 1 && (
-          <button
-            className="btn btn-primary btn-lg"
-            onClick={() => setIndex(index + 1)}
-          >
-            Următorul exercițiu →
-          </button>
-        )}
-      </div>
+      <MediaDisplay
+        ex={ex}
+        index={index}
+        setIndex={setIndex}
+        maxIndex={allExercises.length - 1}
+        hover={hover}
+        setHover={setHover}
+      />
     </div>
   );
 };

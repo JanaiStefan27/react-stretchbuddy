@@ -51,8 +51,7 @@ const Home = () => {
         <p className="lead" style={{ maxWidth: "700px", margin: "0 auto" }}>
           Încălzirea corectă înainte de efort reduce semnificativ riscul de
           accidentări, îmbunătățește performanța și te pregătește mental pentru
-          antrenament. Alege să îți protejezi corpul cu rutine simple, dar
-          eficiente.
+          antrenament.
         </p>
       </div>
 
