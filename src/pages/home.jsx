@@ -1,22 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTheme } from "../context/themecontext";
 
 const Home = () => {
   const { theme } = useTheme();
 
+  const images = [
+    "/images/home/home.png",
+    "/images/home/home1.png",
+    "/images/home/home2.png",
+    "/images/home/home3.png",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className={`home-page ${theme}`}>
-      {/* Hero Section cu imagine full-page și text peste */}
+      {/* Hero Section cu slideshow automat */}
       <div
         className="position-relative"
-        style={{ height: "100vh", overflow: "hidden" }}
+        style={{
+          height: "100vh",
+          overflow: "hidden",
+          backgroundImage: `url(${images[currentIndex]})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          transition: "background-image 1s ease-in-out",
+        }}
       >
-        <img
-          src="/images/stretching.jpg"
-          alt="StretchBuddy"
-          className="position-absolute top-0 start-0 w-100 h-100"
-          style={{ objectFit: "cover", zIndex: 1 }}
-        />
         <div
           className="position-absolute top-50 start-50 translate-middle text-center text-white px-3"
           style={{
@@ -27,21 +44,24 @@ const Home = () => {
           <h1 className="display-3 fw-bold">StretchBuddy</h1>
           <h3 className="mb-3">Încălzește-te. Protejează-ți corpul.</h3>
           <p
-            className="lead mx-auto"
+            className="lead mx-auto text-white fw-bold"
             style={{
               maxWidth: "600px",
-              color: "#000",
-              textShadow:
-                "0 0 10px rgba(255,255,255,0.6)" /* opțional pentru lizibilitate peste imagine */,
+              textShadow: "0 0 10px rgba(0,0,0,0.8)",
             }}
           >
             Exerciții de stretching adaptate pentru fiecare sportiv, indiferent
             de nivel.
           </p>
 
-          <a href="/services" className="btn btn-primary btn-lg mt-3">
-            Vezi exercițiile
-          </a>
+          <div className="d-flex justify-content-center gap-3 mt-3">
+            <a href="/services" className="btn btn-primary btn-lg">
+              Vezi exercițiile
+            </a>
+            <a href="/signup" className="btn btn-primary btn-lg">
+              Înregistrează-te
+            </a>
+          </div>
         </div>
       </div>
 
@@ -81,7 +101,7 @@ const Home = () => {
                   src={src}
                   alt={title}
                   className="card-img-top"
-                  style={{ height: "300px", objectFit: "cover" }}
+                  style={{ height: "450px", objectFit: "cover" }}
                 />
                 <div className="card-body text-center">
                   <h5 className="card-title">{title}</h5>

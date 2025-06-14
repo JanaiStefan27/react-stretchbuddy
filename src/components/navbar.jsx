@@ -99,13 +99,23 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <span
-                  className={`fw-semibold ${
+                <Link
+                  to="/profile"
+                  onClick={closeMenu}
+                  title="Profil"
+                  className={`text-decoration-none ${
                     theme === "dark" ? "text-light" : "text-dark"
                   }`}
                 >
-                  Salut, {user.displayName || user.email}
-                </span>
+                  <span
+                    role="img"
+                    aria-label="profil"
+                    style={{ fontSize: "1.8rem", cursor: "pointer" }}
+                  >
+                    👤
+                  </span>
+                </Link>
+
                 <button onClick={handleLogout} className="btn btn-danger">
                   Logout
                 </button>

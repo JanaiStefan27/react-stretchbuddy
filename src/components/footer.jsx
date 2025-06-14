@@ -2,9 +2,18 @@ import React from "react";
 import "./footer.css";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 import { useTheme } from "../context/themecontext";
+import { auth } from "../firebase/firebase";
 
 const Footer = () => {
   const { theme } = useTheme();
+  const [user, setUser] = React.useState(null);
+
+  React.useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
 
   return (
     <footer
@@ -29,12 +38,15 @@ const Footer = () => {
                 <a href="/">Home</a>
               </li>
               <li>
-                <a href="/services">Exerciții</a>
+                <a href={user ? "/profile#routine" : "/services"}>Exerciții</a>
               </li>
-              <li>
-                <a href="/signup">Înregistrare</a>
-              </li>
+              {!user && (
+                <li>
+                  <a href="/signup">Înregistrare</a>
+                </li>
+              )}
             </ul>
+
             <p className="footer-text text-muted mt-3">
               © {new Date().getFullYear()} StretchBuddy. Toate drepturile
               rezervate.

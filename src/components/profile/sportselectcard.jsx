@@ -11,17 +11,23 @@ const SportSelectCard = ({ sport, isSelected, onSelect }) => {
         src={image}
         alt={name}
         className="card-img-top"
-        style={{ height: 200, objectFit: "cover" }}
+        style={{
+          height: 450,
+          objectFit: "cover",
+          borderTopLeftRadius: "0.5rem",
+          borderTopRightRadius: "0.5rem",
+        }}
       />
+
       <div className="card-body text-center">
         <h5 className="card-title">
           {icon} {name}
         </h5>
         <button
-          className="btn btn-outline-primary mt-2"
+          className="btn btn-primary mt-2"
           onClick={() => onSelect(sport)}
         >
-          {isSelected ? "Selectat" : "Selectează"}
+          Selectează
         </button>
       </div>
     </div>

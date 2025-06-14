@@ -1,6 +1,11 @@
 import React from "react";
 
-const ExerciseThumbnails = ({ exercises, currentIndex, setIndex }) => (
+const ExerciseThumbnails = ({
+  exercises,
+  currentIndex,
+  setIndex,
+  hideLabel = false,
+}) => (
   <div className="d-flex justify-content-center gap-3 flex-wrap mb-4">
     {exercises.map((item, i) => (
       <div key={i} className="text-center">
@@ -18,8 +23,16 @@ const ExerciseThumbnails = ({ exercises, currentIndex, setIndex }) => (
             transition: "all 0.2s ease-in-out",
           }}
         />
-        {currentIndex === i && (
-          <div className="mt-1 fw-semibold small text-nowrap">{item.label}</div>
+        {!hideLabel && currentIndex === i && (
+          <div
+            className="mt-1 fw-semibold small text-nowrap"
+            style={{
+              color: "inherit",
+              textShadow: "0 0 2px rgba(0,0,0,0.6)",
+            }}
+          >
+            {item.label}
+          </div>
         )}
       </div>
     ))}
