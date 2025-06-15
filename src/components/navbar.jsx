@@ -6,7 +6,7 @@ import { useTheme } from "../context/themecontext";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
-  const [expanded, setExpanded] = useState(false); // 👈 toggle state
+  const [expanded, setExpanded] = useState(false); // toggle state
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 

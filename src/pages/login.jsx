@@ -1,4 +1,3 @@
-// login.jsx - cu spinner + redirect către profil
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +21,6 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
 
-      // Simulăm timp de încărcare cu spinner (ex: 2 secunde)
       setTimeout(() => {
         setLoading(false);
         navigate("/profile");

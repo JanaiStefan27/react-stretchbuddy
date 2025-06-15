@@ -1,4 +1,3 @@
-// src/components/profile/authinfo.jsx
 import React, { useState } from "react";
 import { auth } from "../../firebase/firebase";
 import { sendPasswordResetEmail } from "firebase/auth";

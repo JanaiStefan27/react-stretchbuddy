@@ -22,7 +22,6 @@ const Home = () => {
 
   return (
     <div className={`home-page ${theme}`}>
-      {/* Hero Section cu slideshow automat */}
       <div
         className="position-relative"
         style={{
@@ -65,7 +64,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Motivational Text Section */}
       <div className="text-center my-5 px-3">
         <h2 className="mb-3">De ce este importantă încălzirea?</h2>
         <p className="lead" style={{ maxWidth: "700px", margin: "0 auto" }}>
@@ -75,7 +73,6 @@ const Home = () => {
         </p>
       </div>
 
-      {/* Static Sport Card Section */}
       <div className="container pb-5">
         <div className="row g-4">
           {[

@@ -1,4 +1,3 @@
-// signup.jsx - include nume + prenume + titluri vizibile în dark mode + salvare displayName
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../firebase/firebase";

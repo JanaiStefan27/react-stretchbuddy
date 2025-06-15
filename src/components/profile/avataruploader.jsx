@@ -86,15 +86,12 @@ const AvatarUploader = () => {
                   />
                   <div className="d-flex justify-content-center gap-3">
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-primary"
                       onClick={() => fileInputRef.current.click()}
                     >
                       Schimbă imaginea
                     </button>
-                    <button
-                      className="btn btn-outline-danger"
-                      onClick={handleRemove}
-                    >
+                    <button className="btn btn-danger" onClick={handleRemove}>
                       Șterge imaginea
                     </button>
                   </div>

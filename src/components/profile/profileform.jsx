@@ -1,4 +1,3 @@
-// src/components/profile/profileform.jsx
 import React, { useState, useEffect } from "react";
 import { auth } from "../../firebase/firebase";
 

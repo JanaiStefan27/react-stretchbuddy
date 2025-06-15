@@ -16,7 +16,6 @@ const ExerciseCard = ({ title, description, image, link }) => {
         flexDirection: "column",
       }}
     >
-      {/* Imagine mărită */}
       <img
         src={image}
         alt={title}
@@ -28,16 +27,12 @@ const ExerciseCard = ({ title, description, image, link }) => {
           borderTopRightRadius: "24px",
         }}
       />
-
-      {/* Text + buton – spațiere ajustată */}
       <div
         className="card-body text-center d-flex flex-column justify-content-start"
         style={{ padding: "2.5rem", flexGrow: 1 }}
       >
         <h5 className="card-title fs-2 mb-3">{title}</h5>
         <p className="card-text fs-5 mb-4">{description}</p>
-
-        {/* Buton cu margin-top auto pt. împins jos (doar dacă e spațiu) */}
         <div className="mt-auto">
           <a href={link} className="btn btn-primary btn-lg">
             Vezi exercițiile
