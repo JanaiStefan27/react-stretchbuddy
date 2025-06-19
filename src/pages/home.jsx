@@ -57,8 +57,8 @@ const Home = () => {
             <a href="/services" className="btn btn-primary btn-lg">
               Vezi exercițiile
             </a>
-            <a href="/signup" className="btn btn-primary btn-lg">
-              Înregistrează-te
+            <a href="/login" className="btn btn-primary btn-lg">
+              Login
             </a>
           </div>
         </div>

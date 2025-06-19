@@ -57,16 +57,20 @@ const Navbar = () => {
           id="main-navbar"
         >
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
-            <li className="nav-item">
-              <Link className="nav-link" to="/" onClick={closeMenu}>
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/services" onClick={closeMenu}>
-                Sporturi
-              </Link>
-            </li>
+            {!auth.currentUser && (
+              <>
+                <li className="nav-item">
+                  <a href="/" className="nav-link">
+                    Home
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a href="/services" className="nav-link">
+                    Sporturi
+                  </a>
+                </li>
+              </>
+            )}
           </ul>
 
           <div className="d-flex align-items-center gap-3">

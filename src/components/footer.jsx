@@ -34,16 +34,33 @@ const Footer = () => {
           <div className="col-md-4 mb-4">
             <h6 className="footer-title">Navigație</h6>
             <ul className="footer-list">
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href={user ? "/profile#routine" : "/services"}>Exerciții</a>
-              </li>
-              {!user && (
-                <li>
-                  <a href="/signup">Înregistrare</a>
-                </li>
+              {auth.currentUser ? (
+                <>
+                  <li>
+                    <a href="/profile"> Prezentare generală</a>
+                  </li>
+                  <li>
+                    <a href="/profile"> Rutina mea</a>
+                  </li>
+                  <li>
+                    <a href="/profile"> Evenimente</a>
+                  </li>
+                  <li>
+                    <a href="/profile"> Setări</a>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <a href="/"> Home</a>
+                  </li>
+                  <li>
+                    <a href="/services"> Vezi exercițiile</a>
+                  </li>
+                  <li>
+                    <a href="/signup"> Înregistrează-te</a>
+                  </li>
+                </>
               )}
             </ul>
 

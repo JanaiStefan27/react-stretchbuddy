@@ -4,11 +4,9 @@ import AvatarUploader from "./avataruploader";
 const Sidebar = ({ active, setActive }) => {
   const menu = [
     { key: "overview", label: "📊 Prezentare generală" },
-    { key: "sport", label: "🏆 Alege sportul" },
     { key: "routine", label: "🔁 Rutina mea" },
     { key: "events", label: "📅 Evenimente" },
-    { key: "profile", label: "👤 Datele mele" },
-    { key: "auth", label: "🔐 Date de autentificare" },
+    { key: "settings", label: "⚙️ Setări" }, // combinat
   ];
 
   return (

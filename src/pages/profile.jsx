@@ -108,49 +108,56 @@ const Profile = () => {
                 />
               </div>
             </div>
-            <div className="alert alert-info text-center text-black">
-              Activează-ți rutina zilnică și începe antrenamentul personalizat.
-              <br />
-              <a href="/services" className="btn btn-primary btn-sm mt-3">
-                Vezi exercițiile
-              </a>
-            </div>
           </>
         );
 
-      case "sport":
+      case "routine":
         return (
           <>
-            <h2 className="fw-bold mb-1 text-black">
-              {selectedSport ? "Alege exercițiul" : "Alege sportul"}
-            </h2>
-            {selectedSport && (
-              <p className="text-muted mb-4 text-black">
-                Alege exercițiul în funcție de nevoile tale.
-              </p>
-            )}
+            <h2 className="fw-bold mb-3 text-black">Rutina mea</h2>
 
-            {!selectedSport ? (
-              <div className="row g-3">
-                {sports.map((sport, i) => (
-                  <div className="col-md-4" key={i}>
-                    <SportSelectCard
-                      sport={sport}
-                      isSelected={selectedSport?.name === sport.name}
-                      onSelect={handleSelectSport}
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
+            {selectedSport ? (
               <>
+                {/* Rutina curentă sus */}
+                <div className="mb-4">
+                  <h5 className="fw-semibold text-black mb-3">
+                    Exerciții alese
+                  </h5>
+                  {routineList.length === 0 ? (
+                    <p className="text-muted">
+                      Niciun exercițiu selectat încă.
+                    </p>
+                  ) : (
+                    routineList.map((item, index) => (
+                      <RoutineListItem
+                        key={index}
+                        item={item}
+                        onStart={() =>
+                          window.open(item.video || item.image, "_blank")
+                        }
+                        onDelete={() => {
+                          const updated = [...routineList];
+                          updated.splice(index, 1);
+                          saveRoutineList(updated);
+                        }}
+                        onToggleDone={() => {
+                          const updated = [...routineList];
+                          updated[index].done = !updated[index].done;
+                          saveRoutineList(updated);
+                        }}
+                      />
+                    ))
+                  )}
+                </div>
+
+                {/* Selector exercițiu */}
                 <div className="d-flex justify-content-end mb-3">
                   <button
                     className="btn btn-danger"
                     data-bs-toggle="modal"
                     data-bs-target="#cancelSportModal"
                   >
-                    Renunță
+                    Renunță la sport
                   </button>
                 </div>
 
@@ -186,100 +193,78 @@ const Profile = () => {
                   hover={false}
                   setHover={() => {}}
                 />
-              </>
-            )}
 
-            {/* Modal Renunță */}
-            <div
-              className="modal fade"
-              id="cancelSportModal"
-              tabIndex="-1"
-              aria-labelledby="cancelSportModalLabel"
-              aria-hidden="true"
-            >
-              <div className="modal-dialog modal-dialog-centered">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h5
-                      className="modal-title text-black"
-                      id="cancelSportModalLabel"
-                    >
-                      Ești sigur că vrei să renunți?
-                    </h5>
-                    <button
-                      type="button"
-                      className="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Închide"
-                    ></button>
-                  </div>
-                  <div className="modal-body text-center text-black">
-                    Toate selecțiile tale vor fi resetate.
-                  </div>
-                  <div className="modal-footer">
-                    <button
-                      className="btn btn-secondary"
-                      data-bs-dismiss="modal"
-                    >
-                      Nu
-                    </button>
-                    <button
-                      className="btn btn-danger"
-                      data-bs-dismiss="modal"
-                      onClick={() => {
-                        setSelectedSport(null);
-                        setSelectedExerciseIndex(0);
-                        saveRoutineList([]);
-                        localStorage.removeItem("selectedSport");
-                        localStorage.removeItem("selectedExerciseIndex");
-                        localStorage.removeItem("routineList");
-                      }}
-                    >
-                      Da
-                    </button>
+                {/* Modal Renunță */}
+                <div
+                  className="modal fade"
+                  id="cancelSportModal"
+                  tabIndex="-1"
+                  aria-labelledby="cancelSportModalLabel"
+                  aria-hidden="true"
+                >
+                  <div className="modal-dialog modal-dialog-centered">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5
+                          className="modal-title text-black"
+                          id="cancelSportModalLabel"
+                        >
+                          Ești sigur că vrei să renunți?
+                        </h5>
+                        <button
+                          type="button"
+                          className="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Închide"
+                        ></button>
+                      </div>
+                      <div className="modal-body text-center text-black">
+                        Toate selecțiile tale vor fi resetate.
+                      </div>
+                      <div className="modal-footer">
+                        <button
+                          className="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Nu
+                        </button>
+                        <button
+                          className="btn btn-danger"
+                          data-bs-dismiss="modal"
+                          onClick={() => {
+                            setSelectedSport(null);
+                            setSelectedExerciseIndex(0);
+                            saveRoutineList([]);
+                            localStorage.removeItem("selectedSport");
+                            localStorage.removeItem("selectedExerciseIndex");
+                            localStorage.removeItem("routineList");
+                          }}
+                        >
+                          Da
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </>
-        );
-
-      case "routine":
-        return (
-          <>
-            <h2 className="fw-bold mb-3 text-black">Rutina mea</h2>
-            {routineList.length === 0 ? (
-              <div className="text-center py-5">
-                <p className="lead text-black">
-                  Nu ai adăugat încă niciun exercițiu.
-                </p>
-                <button
-                  className="btn btn-primary"
-                  onClick={() => setActiveSection("sport")}
-                >
-                  Alege exercițiile
-                </button>
-              </div>
+              </>
             ) : (
-              routineList.map((item, index) => (
-                <RoutineListItem
-                  key={index}
-                  item={item}
-                  onStart={() =>
-                    window.open(item.video || item.image, "_blank")
-                  }
-                  onDelete={() => {
-                    const updated = [...routineList];
-                    updated.splice(index, 1);
-                    saveRoutineList(updated);
-                  }}
-                  onToggleDone={() => {
-                    const updated = [...routineList];
-                    updated[index].done = !updated[index].done;
-                    saveRoutineList(updated);
-                  }}
-                />
-              ))
+              <>
+                <p className="lead text-black mb-4">
+                  Selectează sportul tău preferat pentru a construi o rutină
+                  personalizată.
+                </p>
+                <div className="row g-3">
+                  {sports.map((sport, i) => (
+                    <div className="col-md-4" key={i}>
+                      <SportSelectCard
+                        sport={sport}
+                        isSelected={selectedSport?.name === sport.name}
+                        onSelect={handleSelectSport}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </>
             )}
           </>
         );
@@ -295,11 +280,17 @@ const Profile = () => {
           </div>
         );
 
-      case "profile":
-        return <ProfileForm />;
-
-      case "auth":
-        return <AuthInfo />;
+      case "settings":
+        return (
+          <div className="row g-4">
+            <div className="col-md-6">
+              <ProfileForm />
+            </div>
+            <div className="col-md-6">
+              <AuthInfo />
+            </div>
+          </div>
+        );
 
       default:
         return null;
