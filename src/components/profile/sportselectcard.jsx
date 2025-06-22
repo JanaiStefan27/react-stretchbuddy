@@ -5,7 +5,9 @@ const SportSelectCard = ({ sport, isSelected, onSelect }) => {
 
   return (
     <div
-      className={`card h-100 shadow-sm ${isSelected ? "border-primary" : ""}`}
+      className={`card profile-content-box text-center ${
+        isSelected ? "border-primary" : ""
+      }`}
     >
       <img
         src={image}

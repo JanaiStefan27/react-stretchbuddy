@@ -6,7 +6,7 @@ const RoutineListItem = ({ item, onStart, onDelete, onToggleDone }) => {
 
   return (
     <div
-      className={`d-flex align-items-center justify-content-between border p-2 mb-2 rounded ${
+      className={`d-flex justify-content-between align-items-center profile-content-box mb-2 ${
         theme === "dark" ? "bg-dark text-light" : "bg-light text-dark"
       }`}
     >

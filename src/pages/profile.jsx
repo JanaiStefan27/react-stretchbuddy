@@ -75,8 +75,8 @@ const Profile = () => {
       case "overview":
         return (
           <>
-            <h2 className="fw-bold mb-3 text-black">Prezentare generală</h2>
-            <p className="lead text-black">
+            <h2 className="fw-bold mb-3">Prezentare generală</h2>
+            <p className="lead">
               Salut, <strong>{user?.displayName || "Utilizator"}</strong> 👋
             </p>
             <div className="row g-3 mb-4">
@@ -114,15 +114,13 @@ const Profile = () => {
       case "routine":
         return (
           <>
-            <h2 className="fw-bold mb-3 text-black">Rutina mea</h2>
+            <h2 className="fw-bold mb-3">Rutina mea</h2>
 
             {selectedSport ? (
               <>
                 {/* Rutina curentă sus */}
                 <div className="mb-4">
-                  <h5 className="fw-semibold text-black mb-3">
-                    Exerciții alese
-                  </h5>
+                  <h5 className="fw-semibold mb-3">Exerciții alese</h5>
                   {routineList.length === 0 ? (
                     <p className="text-muted">
                       Niciun exercițiu selectat încă.
@@ -249,7 +247,7 @@ const Profile = () => {
               </>
             ) : (
               <>
-                <p className="lead text-black mb-4">
+                <p className="lead mb-4">
                   Selectează sportul tău preferat pentru a construi o rutină
                   personalizată.
                 </p>
@@ -271,9 +269,9 @@ const Profile = () => {
 
       case "events":
         return (
-          <div className="text-center py-5">
-            <h2 className="fw-bold mb-3 text-black">Evenimente</h2>
-            <p className="lead text-muted text-black">
+          <div className="profile-content-box text-center">
+            <h2 className="fw-bold mb-3 ">Evenimente</h2>
+            <p className="lead">
               Această secțiune este în curs de dezvoltare. Revino curând pentru
               noutăți! 🛠️
             </p>
@@ -304,7 +302,7 @@ const Profile = () => {
           <Sidebar active={activeSection} setActive={setActiveSection} />
         </div>
         <div className="col-md-9">
-          <div className="p-3 shadow-sm bg-body rounded">{renderSection()}</div>
+          <div className="profile-content-box">{renderSection()}</div>
         </div>
       </div>
     </div>

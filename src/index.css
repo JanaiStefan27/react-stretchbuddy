@@ -115,5 +115,53 @@ html.dark .text-dark-mode {
   z-index: 3;
 }
 
+html.dark input::placeholder,
+html.dark textarea::placeholder,
+html.dark select::placeholder {
+  color: #cccccc;
+  opacity: 1; /* asigură că nu e semi-transparent */
+}
 
+/* Aplică pe zona centrală de conținut din profil */
+.profile-content-box {
+  background-color: var(--card-bg);
+  color: var(--card-text);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
+/* Asigură transparența în dark mode */
+html.dark .profile-content-box {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+}
+
+.profile-content-box label,
+.profile-content-box h5,
+.profile-content-box strong,
+.profile-content-box .form-label
+.profile-content-box p,
+.profile-content-box span,
+.profile-content-box h1,
+.profile-content-box h2,
+.profile-content-box h3,
+.profile-content-box h4,
+.profile-content-box h6 {
+  color: var(--text);
+}
+
+html.dark .profile-content-box p,
+html.dark .profile-content-box span,
+html.dark .profile-content-box label,
+html.dark .profile-content-box .form-label {
+  color: #f1f1f1 !important;
+}
+
+html.dark input:disabled {
+  color: #ffffff !important;
+  background-color: #3a3a3a !important;
+  opacity: 1;
+}

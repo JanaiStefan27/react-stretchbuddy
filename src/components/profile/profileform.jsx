@@ -23,32 +23,24 @@ const ProfileForm = () => {
 
   return (
     <>
-      <h2 className="fw-bold mb-4" style={{ color: "#000" }}>
-        Date personale
-      </h2>
+      <h2 className="fw-bold mb-4">Date personale</h2>
 
-      <div className="bg-white p-4 rounded shadow-sm" style={{ maxWidth: 600 }}>
+      <div className="profile-content-box" style={{ maxWidth: 600 }}>
         <div className="row mb-3">
           <div className="col">
-            <label className="form-label fw-semibold" style={{ color: "#000" }}>
-              Prenume
-            </label>
+            <label className="form-label fw-semibold">Prenume</label>
             <input
               type="text"
               className="form-control"
-              style={{ backgroundColor: "#f1f3f5", color: "#000" }}
               value={firstName || ""}
               disabled
             />
           </div>
           <div className="col">
-            <label className="form-label fw-semibold" style={{ color: "#000" }}>
-              Nume
-            </label>
+            <label className="form-label fw-semibold">Nume</label>
             <input
               type="text"
               className="form-control"
-              style={{ backgroundColor: "#f1f3f5", color: "#000" }}
               value={lastName || ""}
               disabled
             />
@@ -56,13 +48,10 @@ const ProfileForm = () => {
         </div>
 
         <div className="mb-3">
-          <label className="form-label fw-semibold" style={{ color: "#000" }}>
-            Număr de telefon
-          </label>
+          <label className="form-label fw-semibold">Număr de telefon</label>
           <input
             type="text"
             className="form-control"
-            style={{ backgroundColor: "#fff", color: "#000" }}
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="Ex: 074..."
@@ -70,13 +59,10 @@ const ProfileForm = () => {
         </div>
 
         <div className="mb-4">
-          <label className="form-label fw-semibold" style={{ color: "#000" }}>
-            Data nașterii
-          </label>
+          <label className="form-label fw-semibold">Data nașterii</label>
           <input
             type="date"
             className="form-control"
-            style={{ backgroundColor: "#fff", color: "#000" }}
             value={birthDate}
             onChange={(e) => setBirthDate(e.target.value)}
           />

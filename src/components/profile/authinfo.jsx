@@ -19,7 +19,7 @@ const AuthInfo = () => {
   };
 
   return (
-    <div className="bg-white p-4 rounded shadow-sm" style={{ maxWidth: 500 }}>
+    <div className="profile-content-box" style={{ maxWidth: 500 }}>
       <h4 className="fw-bold mb-3 text-primary">Date de autentificare</h4>
 
       <p className="mb-3 fw-semibold" style={{ color: "#000" }}>
